@@ -466,7 +466,7 @@ install(
 )
 
 IF( ASSIMP_BUILD_DOCS )
-  ADD_SUBDIRECTORY(doc)
+    MESSAGE(WARNING "Docs disabled on this fork")
 ENDIF()
 
 # Search for external dependencies, and build them from source if not found
@@ -700,32 +700,15 @@ ENDIF()
 ADD_SUBDIRECTORY( code/ )
 
 IF ( ASSIMP_BUILD_ASSIMP_TOOLS )
-  # The viewer for windows only
-  IF (WIN32)
-    FIND_PACKAGE(DirectX)
-    OPTION ( ASSIMP_BUILD_ASSIMP_VIEW "If the Assimp view tool is built. (requires DirectX)" ${DirectX_FOUND} )
-    IF ( ASSIMP_BUILD_ASSIMP_VIEW )
-      ADD_SUBDIRECTORY( tools/assimp_view/ )
-    ENDIF ()
-  ELSE()
-    MESSAGE("Building Assimp Viewer only supported on Windows.")
-  ENDIF ()
-  # The command line tool
-  ADD_SUBDIRECTORY( tools/assimp_cmd/ )
+  MESSAGE(WARNING "Tools disabled on this fork")
 ENDIF ()
 
 IF ( ASSIMP_BUILD_SAMPLES )
-  SET( SAMPLES_DIR ${CMAKE_CURRENT_SOURCE_DIR}/samples )
-  SET( SAMPLES_SHARED_CODE_DIR ${SAMPLES_DIR}/SharedCode )
-  IF ( WIN32 )
-    ADD_SUBDIRECTORY( samples/SimpleTexturedOpenGL/ )
-    ADD_SUBDIRECTORY( samples/SimpleTexturedDirectx11 )
-  ENDIF ()
-  ADD_SUBDIRECTORY( samples/SimpleOpenGL/ )
+    MESSAGE(WARNING "Samples disabled on this fork")
 ENDIF ()
 
 IF ( ASSIMP_BUILD_TESTS )
-  ADD_SUBDIRECTORY( test/ )
+  MESSAGE(WARNING "Tests disabled on this fork")
 ENDIF ()
 
 # Generate a pkg-config .pc, revision.h, and config.h for the Assimp library.
